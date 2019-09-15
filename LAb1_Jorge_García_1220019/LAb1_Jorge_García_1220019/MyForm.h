@@ -81,6 +81,7 @@ namespace LAb1JorgeGarcía1220019 {
 	private: System::Windows::Forms::Label^  lblPali;
 	private: System::Windows::Forms::Button^  btnCambio;
 	private: System::Windows::Forms::Label^  lblTransformado;
+	private: System::Windows::Forms::Label^  label6;
 
 
 
@@ -128,6 +129,7 @@ namespace LAb1JorgeGarcía1220019 {
 			this->txtBO = (gcnew System::Windows::Forms::TextBox());
 			this->txtNumT = (gcnew System::Windows::Forms::TextBox());
 			this->tabPage1 = (gcnew System::Windows::Forms::TabPage());
+			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->tbControl->SuspendLayout();
 			this->tabPage2->SuspendLayout();
 			this->tCEj1->SuspendLayout();
@@ -307,6 +309,7 @@ namespace LAb1JorgeGarcía1220019 {
 			// 
 			// tPEJ2
 			// 
+			this->tPEJ2->Controls->Add(this->label6);
 			this->tPEJ2->Controls->Add(this->lblPali);
 			this->tPEJ2->Controls->Add(this->txtPali);
 			this->tPEJ2->Controls->Add(this->BtnPali);
@@ -321,15 +324,15 @@ namespace LAb1JorgeGarcía1220019 {
 			// lblPali
 			// 
 			this->lblPali->AutoSize = true;
-			this->lblPali->Location = System::Drawing::Point(110, 50);
+			this->lblPali->Location = System::Drawing::Point(71, 88);
 			this->lblPali->Name = L"lblPali";
-			this->lblPali->Size = System::Drawing::Size(35, 13);
+			this->lblPali->Size = System::Drawing::Size(61, 13);
 			this->lblPali->TabIndex = 2;
-			this->lblPali->Text = L"label6";
+			this->lblPali->Text = L"Resultado: ";
 			// 
 			// txtPali
 			// 
-			this->txtPali->Location = System::Drawing::Point(74, 89);
+			this->txtPali->Location = System::Drawing::Point(74, 51);
 			this->txtPali->Name = L"txtPali";
 			this->txtPali->Size = System::Drawing::Size(100, 20);
 			this->txtPali->TabIndex = 1;
@@ -445,6 +448,15 @@ namespace LAb1JorgeGarcía1220019 {
 			this->tabPage1->Text = L"Ejercicios";
 			this->tabPage1->UseVisualStyleBackColor = true;
 			// 
+			// label6
+			// 
+			this->label6->AutoSize = true;
+			this->label6->Location = System::Drawing::Point(22, 54);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(46, 13);
+			this->label6->TabIndex = 3;
+			this->label6->Text = L"Palabra:";
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -524,7 +536,7 @@ private: System::Void BtnPali_Click(System::Object^  sender, System::EventArgs^ 
 	System::String^ Palabra = txtPali->Text;
 	int n = 0;
 	Recursividad^ recursividadObj = gcnew Recursividad();
-	lblPali->Text = System::Convert::ToString(recursividadObj->PPali(Palabra, n));;
+	lblPali->Text = lblPali->Text + System::Convert::ToString(recursividadObj->PPali(Palabra, n));;
 	stopWatch->Stop();
 	System::Windows::Forms::MessageBox::Show("Tiempo de ejecución: " + System::Convert::ToString(stopWatch->Elapsed));
 }
@@ -532,9 +544,9 @@ private: System::Void btnCambio_Click(System::Object^  sender, System::EventArgs
 	Stopwatch^ stopWatch = gcnew Stopwatch();
 	stopWatch->Start();
 	Recursividad^ recursividadObj = gcnew Recursividad();
-
+	lblRes->Text = "Resultado: ";
 	//int BaseDec = recursividadObj->CambioDEC(txtNumT->Text, System::Convert::ToInt32(txtBO->Text), 0);
-	lblTransformado->Text = System::Convert::ToString(recursividadObj->CambioB(recursividadObj->CambioDEC(txtNumT->Text, System::Convert::ToInt32(txtBO->Text), 0), System::Convert::ToInt32(txtBD->Text)));
+	lblTransformado->Text = lblTransformado->Text + System::Convert::ToString(recursividadObj->CambioB(recursividadObj->CambioDEC(txtNumT->Text, System::Convert::ToInt32(txtBO->Text), 0), System::Convert::ToInt32(txtBD->Text)));
 	stopWatch->Stop();
 	System::Windows::Forms::MessageBox::Show("Tiempo de ejecución: " + System::Convert::ToString(stopWatch->Elapsed));
 }
